@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77E1B25EB0140C36F351507A /* Pods_pmen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1589344794E6516A696210E2 /* Pods_pmen.framework */; };
 		C03447A31EE1B3AB00C8B9AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03447A21EE1B3AB00C8B9AC /* AppDelegate.swift */; };
 		C03447A51EE1B3AB00C8B9AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03447A41EE1B3AB00C8B9AC /* ViewController.swift */; };
 		C03447A81EE1B3AB00C8B9AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C03447A61EE1B3AB00C8B9AC /* Main.storyboard */; };
 		C03447AA1EE1B3AB00C8B9AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C03447A91EE1B3AB00C8B9AC /* Assets.xcassets */; };
 		C03447AD1EE1B3AB00C8B9AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C03447AB1EE1B3AB00C8B9AC /* LaunchScreen.storyboard */; };
+		C03447B51EE1B3DB00C8B9AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C03447B41EE1B3DB00C8B9AC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1589344794E6516A696210E2 /* Pods_pmen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pmen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C034479F1EE1B3AB00C8B9AC /* pmen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pmen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C03447A21EE1B3AB00C8B9AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C03447A41EE1B3AB00C8B9AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		C03447A91EE1B3AB00C8B9AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C03447AC1EE1B3AB00C8B9AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C03447AE1EE1B3AB00C8B9AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C03447B41EE1B3DB00C8B9AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB54C2A2ED3E3CF1A41201BD /* Pods-pmen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmen.release.xcconfig"; path = "Pods/Target Support Files/Pods-pmen/Pods-pmen.release.xcconfig"; sourceTree = "<group>"; };
+		F2600CFBBA44BF6FCCBC9380 /* Pods-pmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pmen/Pods-pmen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77E1B25EB0140C36F351507A /* Pods_pmen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7ECD18B53506090FBDAC1F42 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2600CFBBA44BF6FCCBC9380 /* Pods-pmen.debug.xcconfig */,
+				CB54C2A2ED3E3CF1A41201BD /* Pods-pmen.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		979063E916511A95EFA108A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1589344794E6516A696210E2 /* Pods_pmen.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C03447961EE1B3AB00C8B9AC = {
 			isa = PBXGroup;
 			children = (
 				C03447A11EE1B3AB00C8B9AC /* pmen */,
 				C03447A01EE1B3AB00C8B9AC /* Products */,
+				7ECD18B53506090FBDAC1F42 /* Pods */,
+				979063E916511A95EFA108A8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +80,7 @@
 		C03447A11EE1B3AB00C8B9AC /* pmen */ = {
 			isa = PBXGroup;
 			children = (
+				C03447B41EE1B3DB00C8B9AC /* GoogleService-Info.plist */,
 				C03447A21EE1B3AB00C8B9AC /* AppDelegate.swift */,
 				C03447A41EE1B3AB00C8B9AC /* ViewController.swift */,
 				C03447A61EE1B3AB00C8B9AC /* Main.storyboard */,
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C03447B11EE1B3AB00C8B9AC /* Build configuration list for PBXNativeTarget "pmen" */;
 			buildPhases = (
+				2A7F3E360C85E7846446B6F8 /* [CP] Check Pods Manifest.lock */,
 				C034479B1EE1B3AB00C8B9AC /* Sources */,
 				C034479C1EE1B3AB00C8B9AC /* Frameworks */,
 				C034479D1EE1B3AB00C8B9AC /* Resources */,
+				1486A4619D841C023984D226 /* [CP] Embed Pods Frameworks */,
+				CB342EC648A258A3A0BE2B7E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,12 +155,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				C03447AD1EE1B3AB00C8B9AC /* LaunchScreen.storyboard in Resources */,
+				C03447B51EE1B3DB00C8B9AC /* GoogleService-Info.plist in Resources */,
 				C03447AA1EE1B3AB00C8B9AC /* Assets.xcassets in Resources */,
 				C03447A81EE1B3AB00C8B9AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1486A4619D841C023984D226 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pmen/Pods-pmen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A7F3E360C85E7846446B6F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CB342EC648A258A3A0BE2B7E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pmen/Pods-pmen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C034479B1EE1B3AB00C8B9AC /* Sources */ = {
@@ -259,6 +338,7 @@
 		};
 		C03447B21EE1B3AB00C8B9AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2600CFBBA44BF6FCCBC9380 /* Pods-pmen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EJABU3NK3W;
@@ -272,6 +352,7 @@
 		};
 		C03447B31EE1B3AB00C8B9AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB54C2A2ED3E3CF1A41201BD /* Pods-pmen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EJABU3NK3W;
@@ -302,6 +383,7 @@
 				C03447B31EE1B3AB00C8B9AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
