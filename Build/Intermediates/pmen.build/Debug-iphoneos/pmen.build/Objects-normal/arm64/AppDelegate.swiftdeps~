@@ -12,7 +12,6 @@ provides-dynamic-lookup:
 - "applicationWillEnterForeground"
 - "applicationWillResignActive"
 - "applicationWillTerminate"
-- "window"
 depends-top-level:
 - "AppDelegate"
 - !private "Array"
@@ -28,7 +27,6 @@ depends-top-level:
 - "UIApplicationLaunchOptionsKey"
 - "UIApplicationOpenURLOptionsKey"
 - "UIResponder"
-- "UIWindow"
 - "URL"
 depends-member:
 - !private ["Ps9AnyObject", "GIDSignIn"]
@@ -58,7 +56,6 @@ depends-member:
 - ["C4pmen11AppDelegate", "UIApplication"]
 - ["C4pmen11AppDelegate", "UIApplicationLaunchOptionsKey"]
 - ["C4pmen11AppDelegate", "UIApplicationOpenURLOptionsKey"]
-- ["C4pmen11AppDelegate", "UIWindow"]
 - ["C4pmen11AppDelegate", "URL"]
 - ["C4pmen11AppDelegate", "application"]
 - ["C4pmen11AppDelegate", "applicationDidBecomeActive"]
@@ -214,7 +211,6 @@ depends-member:
 - ["CSo8NSObject", "UIApplication"]
 - ["CSo8NSObject", "UIApplicationLaunchOptionsKey"]
 - ["CSo8NSObject", "UIApplicationOpenURLOptionsKey"]
-- ["CSo8NSObject", "UIWindow"]
 - ["CSo8NSObject", "URL"]
 - ["CSo8NSObject", "application"]
 - ["CSo8NSObject", "applicationDidBecomeActive"]
@@ -287,7 +283,6 @@ depends-member:
 - ["CSo11UIResponder", "UIApplication"]
 - ["CSo11UIResponder", "UIApplicationLaunchOptionsKey"]
 - ["CSo11UIResponder", "UIApplicationOpenURLOptionsKey"]
-- ["CSo11UIResponder", "UIWindow"]
 - ["CSo11UIResponder", "URL"]
 - ["CSo11UIResponder", "application"]
 - ["CSo11UIResponder", "applicationDidBecomeActive"]
@@ -439,4 +434,4 @@ depends-external:
 - "/Users/your3i/Documents/Projects/pmen/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework/Modules/module.modulemap"
 - "/Users/your3i/Documents/Projects/pmen/Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Modules/module.modulemap"
 - "/Users/your3i/Documents/Projects/pmen/Pods/Google/Headers/module.modulemap"
-interface-hash: "d9b942c38d8ee42700b82bcefbe27b6e"
+interface-hash: "f140b113c7fe0176dcb1579587d9a63f"

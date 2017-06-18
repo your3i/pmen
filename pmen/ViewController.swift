@@ -19,14 +19,15 @@ enum Key {
     static let hirakana = "hirakana"
     static let team = "team"
     static let floor = "floor"
-    static let extensionNo = "extensionNo"
+    static let telNo = "telNo"
+    static let avatar = "avatar"
+    static let status = "status"
 }
 
 class ViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Initialize sign-in
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
 
@@ -39,26 +40,23 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
 
     fileprivate func loadJSONData(withToken token: String) {
         let url = "https://spreadsheets.google.com/feeds/list/1A2hgSyw4uaj0v5j01FSPw92mbm7qoqRlNOKQ-Ijv9x0/od6/public/values?alt=json&access_token=\(token)"
+
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Alamofire.request(url).responseData { [weak self] response in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+
             guard let data = response.result.value else {
-                print("@DD Request failure.")
+                print("@DD Error request failure.")
                 return
             }
-            guard let utf8Text = String(data: data, encoding: .utf8) else {
-                return
-            }
-            print("@DD data: \(utf8Text)")
 
             do {
-                guard let jsonDic = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any],
-                let feedDic = jsonDic["feed"] as? [String: Any] else {
-                    return
-                }
-                guard let entryDicArray = feedDic["entry"] as? [[String: Any]] else {
-                    return
-                }
-                guard let parsedEntryDicArray = self?.parse(with: entryDicArray) else {
-                    return
+                guard
+                    let jsonDic = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any],
+                    let feedDic = jsonDic["feed"] as? [String: Any],
+                    let entryDicArray = feedDic["entry"] as? [[String: Any]],
+                    let parsedEntryDicArray = self?.parse(with: entryDicArray) else {
+                        return
                 }
 
                 self?.setupSearchableItems(with: parsedEntryDicArray)
@@ -99,29 +97,13 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
 
         var items = [CSSearchableItem]()
         for i in 0 ..< dicArray.count {
-            let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
-
             let man = dicArray[i]
-            let name = man[Key.name]!
-            let nickname = man[Key.nickname]!
-
-            attributeSet.title = name + " " + nickname
-
-            var otherDescription = ""
-            for (key, value) in man {
-                guard key != Key.name, key != Key.nickname else {
-                    continue
-                }
-                otherDescription += "/ \(key): \(value) "
+            guard let attributeSet = buildAttributeSet(forMan: man) else {
+                continue
             }
-            attributeSet.contentDescription = otherDescription
 
-            var keywords = ["ppp", nickname, man[Key.romaji]!]
-            keywords.append(contentsOf: (name.characters).map { String($0) })
-            keywords.append(contentsOf: (man[Key.hirakana]!.characters).map { String($0) })
-            attributeSet.keywords = keywords
-
-            let aItem = CSSearchableItem(uniqueIdentifier: "com.your3i.pmen.pmanNo\(i)", domainIdentifier: "pmen", attributeSet: attributeSet)
+            let aItem = CSSearchableItem(uniqueIdentifier: "com.your3i.pmen.pmanNo\(i)",
+                domainIdentifier: "pmen", attributeSet: attributeSet)
             items.append(aItem)
         }
 
@@ -130,6 +112,45 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                 print(error?.localizedDescription ?? "")
             }
         }
+    }
+
+    private func buildAttributeSet(forMan man: [String: String]) -> CSSearchableItemAttributeSet? {
+        guard let name = man[Key.name], let nickname = man[Key.nickname] else {
+            return nil
+        }
+
+        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+
+        attributeSet.title = name + " " + nickname
+        if let avatar = man[Key.avatar],
+            !avatar.isEmpty,
+            let avatarURL = URL(string: avatar) {
+
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            if let data = try? Data(contentsOf: avatarURL) {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                attributeSet.thumbnailData = data
+            }
+        } else {
+            let defaultURL = Bundle.main.url(forResource: "pchan", withExtension: "png")
+            attributeSet.thumbnailURL = defaultURL
+        }
+
+        var otherDescription = ""
+        for (key, value) in man {
+            guard key != Key.name, key != Key.nickname, key != Key.avatar else {
+                continue
+            }
+            otherDescription += "/ \(key): \(value) "
+        }
+        attributeSet.contentDescription = otherDescription
+
+        var keywords = ["ppp", nickname, man[Key.romaji]!]
+        keywords.append(contentsOf: (name.characters).map { String($0) })
+        keywords.append(contentsOf: (man[Key.hirakana]!.characters).map { String($0) })
+        attributeSet.keywords = keywords
+
+        return attributeSet
     }
 }
 
@@ -148,4 +169,3 @@ extension ViewController: GIDSignInDelegate {
         print("@DD didDisconnectWithUser: \(user.profile.name)")
     }
 }
-

@@ -14,6 +14,7 @@
 		C03447AA1EE1B3AB00C8B9AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C03447A91EE1B3AB00C8B9AC /* Assets.xcassets */; };
 		C03447AD1EE1B3AB00C8B9AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C03447AB1EE1B3AB00C8B9AC /* LaunchScreen.storyboard */; };
 		C03447B51EE1B3DB00C8B9AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C03447B41EE1B3DB00C8B9AC /* GoogleService-Info.plist */; };
+		C0DD5A4D1EF6B25500C178BC /* pchan.png in Resources */ = {isa = PBXBuildFile; fileRef = C0DD5A4C1EF6B25500C178BC /* pchan.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C03447AC1EE1B3AB00C8B9AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C03447AE1EE1B3AB00C8B9AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C03447B41EE1B3DB00C8B9AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0DD5A4C1EF6B25500C178BC /* pchan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pchan.png; sourceTree = "<group>"; };
 		CB54C2A2ED3E3CF1A41201BD /* Pods-pmen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmen.release.xcconfig"; path = "Pods/Target Support Files/Pods-pmen/Pods-pmen.release.xcconfig"; sourceTree = "<group>"; };
 		F2600CFBBA44BF6FCCBC9380 /* Pods-pmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pmen/Pods-pmen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 		C03447A11EE1B3AB00C8B9AC /* pmen */ = {
 			isa = PBXGroup;
 			children = (
+				C0DD5A4C1EF6B25500C178BC /* pchan.png */,
 				C03447B41EE1B3DB00C8B9AC /* GoogleService-Info.plist */,
 				C03447A21EE1B3AB00C8B9AC /* AppDelegate.swift */,
 				C03447A41EE1B3AB00C8B9AC /* ViewController.swift */,
@@ -126,8 +129,8 @@
 				TargetAttributes = {
 					C034479E1EE1B3AB00C8B9AC = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = EJABU3NK3W;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = JUP68UG8HT;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -158,6 +161,7 @@
 				C03447B51EE1B3DB00C8B9AC /* GoogleService-Info.plist in Resources */,
 				C03447AA1EE1B3AB00C8B9AC /* Assets.xcassets in Resources */,
 				C03447A81EE1B3AB00C8B9AC /* Main.storyboard in Resources */,
+				C0DD5A4D1EF6B25500C178BC /* pchan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,11 +345,13 @@
 			baseConfigurationReference = F2600CFBBA44BF6FCCBC9380 /* Pods-pmen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = EJABU3NK3W;
+				DEVELOPMENT_TEAM = JUP68UG8HT;
 				INFOPLIST_FILE = pmen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.your3i.pmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c1e61ef6-9535-4832-92d5-54045ff3b084";
+				PROVISIONING_PROFILE_SPECIFIER = DevAll;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -355,11 +361,14 @@
 			baseConfigurationReference = CB54C2A2ED3E3CF1A41201BD /* Pods-pmen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = EJABU3NK3W;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = JUP68UG8HT;
 				INFOPLIST_FILE = pmen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.your3i.pmen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c1e61ef6-9535-4832-92d5-54045ff3b084";
+				PROVISIONING_PROFILE_SPECIFIER = DevAll;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
