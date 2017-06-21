@@ -2,11 +2,9 @@
 # platform :ios, '9.0'
 
 target 'pmen' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for pmen
   pod 'Google/SignIn'
   pod 'Alamofire', '~> 4.4'
-
 end
