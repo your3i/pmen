@@ -1,5 +1,0 @@
-version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
-options: "356af7485e8618d67a90056438a47aae"
-build_time: [549889893, 591772000]
-inputs:
-  "/Users/your3i/Documents/Projects/pmen/Pods/SwiftyJSON/Source/SwiftyJSON.swift": [549866517, 0]
