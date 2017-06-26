@@ -19,9 +19,9 @@ enum Key {
     static let hirakana = "hirakana"
     static let team = "team"
     static let floor = "floor"
-    static let telNo = "telNo"
     static let avatar = "avatar"
-    static let status = "status"
+
+    static let staticKeys = [Key.name, Key.nickname, Key.romaji, Key.hirakana, Key.team, Key.floor, Key.avatar]
 }
 
 class ViewController: UIViewController, GIDSignInUIDelegate {
@@ -115,15 +115,40 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
 
     private func buildAttributeSet(forMan man: [String: String]) -> CSSearchableItemAttributeSet? {
-        guard let name = man[Key.name], let nickname = man[Key.nickname] else {
+        guard
+            let name = man[Key.name],
+            let nickname = man[Key.nickname],
+            let team = man[Key.team],
+            let floor = man[Key.floor],
+            let romaji = man[Key.romaji],
+            let hiragana = man[Key.hirakana] else {
             return nil
         }
 
         let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
 
-        attributeSet.title = name + " " + nickname
-        if let avatar = man[Key.avatar],
-            !avatar.isEmpty,
+        attributeSet.title = name + " " + nickname + " @ " + team
+
+        var otherDescription = ""
+        if !floor.isEmpty {
+            otherDescription += "/ \(floor) "
+        }
+        if !hiragana.isEmpty {
+            otherDescription += "/ \(hiragana) "
+        }
+        if !romaji.isEmpty {
+            otherDescription += "/ \(romaji) "
+        }
+
+        for (key, value) in man {
+            guard !Key.staticKeys.contains(key), !value.isEmpty else {
+                continue
+            }
+            otherDescription += "/ \(key): \(value) "
+        }
+        attributeSet.contentDescription = otherDescription
+
+        if let avatar = man[Key.avatar], !avatar.isEmpty,
             let avatarURL = URL(string: avatar) {
 
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -131,23 +156,12 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 attributeSet.thumbnailData = data
             }
-        } else {
-            let defaultURL = Bundle.main.url(forResource: "pchan", withExtension: "png")
-            attributeSet.thumbnailURL = defaultURL
         }
 
-        var otherDescription = ""
-        for (key, value) in man {
-            guard key != Key.name, key != Key.nickname, key != Key.avatar else {
-                continue
-            }
-            otherDescription += "/ \(key): \(value) "
-        }
-        attributeSet.contentDescription = otherDescription
-
-        var keywords = ["ppp", nickname, man[Key.romaji]!]
+        var keywords = ["ppp", nickname, name, romaji]
+        keywords.append(contentsOf: (nickname.characters).map { String($0) })
         keywords.append(contentsOf: (name.characters).map { String($0) })
-        keywords.append(contentsOf: (man[Key.hirakana]!.characters).map { String($0) })
+        keywords.append(contentsOf: (hiragana.characters).map { String($0) })
         attributeSet.keywords = keywords
 
         return attributeSet
